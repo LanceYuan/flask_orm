@@ -16,5 +16,7 @@ manager.add_command("db", MigrateCommand)
 def cmd(args):
     print(args)
 
+
+# 通过pipreqs生产插件库.  pipreqs ./ --encoding=utf8
 if __name__ == "__main__":
     manager.run()
