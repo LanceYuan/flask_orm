@@ -18,5 +18,6 @@ def cmd(args):
 
 
 # 通过pipreqs生产插件库.  pipreqs ./ --encoding=utf8
+# pip3 install -r ./requirements.txt 通过requirements文件安装插件.
 if __name__ == "__main__":
     manager.run()
