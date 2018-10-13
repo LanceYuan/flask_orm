@@ -13,3 +13,11 @@ def login():
     data = db.session.query(UserInfo.username, UserInfo.password).all()
     print(data)
     return render_template("login.html")
+
+@ap.route("/index/")
+def index():
+    return render_template("index.html", data="<h1>index</h1>")
+
+@ap.app_template_filter() # 通过BLuePrint增加自定义filter
+def make_up(text):
+    return text.upper()
