@@ -21,3 +21,7 @@ def index():
 @ap.app_template_filter() # 通过BLuePrint增加自定义filter
 def make_up(text):
     return text.upper()
+
+@ap.route('/index/<regex("\w{4,5}"):user_name>')
+def user(user_name):
+    return render_template("index.html", user=user_name)

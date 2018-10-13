@@ -6,9 +6,11 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-{{ data|safe }}
-{{ data|md|safe }}
-{{ data|make_up|safe }}
+{{ data|default('none')|safe }}
+{{ data|default('none')|md|safe }}
+{{ data|default('none')|make_up|safe }}
+<hr>
+Welcome: {{ user|default('none') }}
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
