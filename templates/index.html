@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<ul>
+    {% for k, v in users.items() %}
+        <li uid="{{ k }}">{{ v.name }} : {{ v.count }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+<script>
+    $(document).ready(
+        function () {
+            $("ul").on("click", "li", function () {
+                var uid = $(this).attr("uid");
+                $.ajax({
+                    url: "/vote/",
+                    type: "post",
+                    dataType: "json",
+                    data: {"uid": uid},
+                    success: function (args) {
+                        $("ul").empty();
+                        $.each(args, function (k, v) {
+                            var liEle = document.createElement("li");
+                            $(liEle).attr("uid", k);
+                            $(liEle).text(v.name + " : " + v.count);
+                            $("ul").append(liEle);
+                        });
+                    }
+                })
+            })
+        }
+    )
+</script>
+</html>
