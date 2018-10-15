@@ -26,15 +26,11 @@ def index():
 
 
 q = Queue()
-
 @app.route("/vote/", methods=["POST"])
 def vote():
-    try:
-        q.get(timeout=30)
-    except Exception:pass
-
     uid = request.form.get("uid")
     Users[int(uid)]["count"] += 1
+    q.put(Users)
     return jsonify(Users)
 
 if __name__ == "__main__":
